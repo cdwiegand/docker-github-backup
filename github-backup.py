@@ -52,6 +52,8 @@ def mirror(repo_name, repo_url, to_path, username, token):
     repo_path = os.path.join(to_path, repo_name)
     mkdir(repo_path)
 
+    echo "Mirroring {repo_name}" # so we can tell from log which repo is causing failures
+
     # git-init manual:
     # "Running git init in an existing repository is safe."
     subprocess.call(["git", "init", "--bare", "--quiet"], cwd=repo_path)
